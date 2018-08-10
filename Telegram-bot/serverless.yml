@@ -1,0 +1,21 @@
+service: telegramtranslatorbot
+
+provider:
+  name: aws
+  runtime: python3.6
+  environment:
+    telegram_token: ""
+    yandex_api_key: ""
+
+package:
+  include:
+    - src/**
+
+functions:
+  hello:
+    handler: src/telegram_app.telegram_trigger
+    events:
+      - http: POST /
+
+plugins:
+  - serverless-python-requirements
