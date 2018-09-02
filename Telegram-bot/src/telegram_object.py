@@ -10,9 +10,9 @@ class TelegramMessageObject:
         self.message_user_id = telegram_hash['message']['from']['id']
         self.message_is_bot = telegram_hash['message']['from']['is_bot']
         self.message_first_name = telegram_hash['message']['from']['first_name']
-        self.language_code = telegram_hash['message']['from']['language_code']
         self.chat_id = telegram_hash['message']['chat']['id']
         self.chat_first_name = telegram_hash['message']['chat']['first_name']
         self.chat_type = telegram_hash['message']['chat']['type']
-        self.message_date = helpers.convert_unixtime_to_timestamp(telegram_hash['message']['date'])
+        self.message_date = helpers.convert_unixtime_to_timestamp(
+                            telegram_hash['message']['date'])
         self.text = telegram_hash['message']['text']

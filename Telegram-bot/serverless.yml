@@ -1,4 +1,4 @@
-service: telegramtranslatorbot
+service: telegramtranslator
 
 provider:
   name: aws
@@ -6,12 +6,18 @@ provider:
   environment:
     telegram_token: ${file(./serverless.env.yml):dev.telegram_token}
     yandex_api_key: ${file(./serverless.env.yml):dev.yandex_api_key}
+    yandex_diccionary_key: ${file(./serverless.env.yml):dev.yandex_diccionary_key}
 
 package:
   include:
     - src/**
+  exclude:
+    - node_modules/**
+    - package-lock.json
+    - package.json
+    
 functions:
-  hello:
+  telegram_bot:
     handler: src/telegram_app.telegram_trigger
     events:
       - http: POST /
